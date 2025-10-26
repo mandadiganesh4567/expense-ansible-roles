@@ -1,5 +1,7 @@
 - name: confuring mysql server
   hosts: mysql
   become: yes
+  var_files:
+    - /var/expense
   roles:
   - mysql
