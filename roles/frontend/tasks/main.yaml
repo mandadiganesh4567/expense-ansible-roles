@@ -28,13 +28,17 @@
       dest: /usr/share/nginx/html
       remote_src: yes
 
-  - name: copy expense conf
+  - name: Copy Nginx config
     ansible.builtin.template:
-      src: expense.conf.j2
-      dest: /etc/nginx/default.d/expense.conf
+    src: nginx.conf.j2
+    dest: /etc/nginx/conf.d/frontend.conf
+    owner: root
+    group: root
+    mode: '0644'
 
-  - name: restart nginx
+  - name: Restart Nginx
     ansible.builtin.service:
-      name: nginx
-      state: restarted
+    name: nginx
+    state: restarted
+
   
